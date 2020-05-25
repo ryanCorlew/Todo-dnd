@@ -29,6 +29,15 @@ class App extends React.Component {
     newTodo: "",
   };
 
+  componentDidMount() {
+    let todos = JSON.parse(localStorage.getItem("todos"));
+    let columns = JSON.parse(localStorage.getItem("columns"));
+
+    if (todos && columns) {
+      this.setState({ todos: todos, columns: columns });
+    }
+  }
+
   onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
@@ -55,8 +64,10 @@ class App extends React.Component {
 
       newColumns[source.droppableId].todoIds = startTodos;
       newColumns[destination.droppableId].todoIds = endTodos;
-      console.log("new columns---", newColumns);
-      this.setState({ columns: newColumns });
+
+      this.setState({ columns: newColumns }, () => {
+        localStorage.setItem("columns", JSON.stringify(this.state.columns));
+      });
       return;
     }
 
@@ -69,7 +80,9 @@ class App extends React.Component {
 
     newColumns[destination.droppableId].todoIds = newTodos;
 
-    this.setState({ columns: newColumns });
+    this.setState({ columns: newColumns }, () => {
+      localStorage.setItem("columns", JSON.stringify(this.state.columns));
+    });
   };
 
   inputChangeHandler = (e) => {
@@ -98,11 +111,13 @@ class App extends React.Component {
     newColumns["column-1"].todoIds = todoIds;
 
     // Update state
-    this.setState({ todos: newTodos, columns: newColumns, newTodo: "" });
+    this.setState({ todos: newTodos, columns: newColumns, newTodo: "" }, () => {
+      localStorage.setItem("todos", JSON.stringify(this.state.todos));
+      localStorage.setItem("columns", JSON.stringify(this.state.columns));
+    });
   };
 
   render() {
-    console.log("columns----", this.state.columns);
     return (
       <div className="App">
         <h1 className="Title">
