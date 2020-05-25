@@ -14,7 +14,7 @@ const TodoList = styled.div`
   min-height: 25px;
 `;
 
-const Column = ({ todos, column }) => {
+const Column = ({ todos, column, onDelete }) => {
   return (
     <MyCard>
       <Title>{column.title}</Title>
@@ -22,7 +22,12 @@ const Column = ({ todos, column }) => {
         {(provided) => (
           <TodoList ref={provided.innerRef} {...provided.droppableProps}>
             {todos.map((todo, index) => (
-              <Todo key={todo.id} todo={todo} index={index} />
+              <Todo
+                key={todo.id}
+                todo={todo}
+                index={index}
+                onDelete={onDelete}
+              />
             ))}
             {provided.placeholder}
           </TodoList>

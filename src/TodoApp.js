@@ -19,7 +19,7 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-const TodoApp = ({ onDragEnd, state, change, submit, click }) => {
+const TodoApp = ({ onDragEnd, state, change, submit, click, onDelete }) => {
   const classes = useStyles();
 
   return (
@@ -35,7 +35,7 @@ const TodoApp = ({ onDragEnd, state, change, submit, click }) => {
           <ListColumns
             todosObj={state.todos}
             columns={state.columns}
-            columnOrder={state.columnOrder}
+            onDelete={onDelete}
           />
         </Container>
       </DragDropContext>

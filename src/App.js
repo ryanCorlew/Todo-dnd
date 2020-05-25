@@ -7,25 +7,24 @@ import TodoApp from "./TodoApp";
 
 class App extends React.Component {
   state = {
-    todos: {},
-    columns: {
-      "column-1": {
+    todos: [],
+    columns: [
+      {
         id: "column-1",
         title: "ToDo",
         todoIds: [],
       },
-      "column-2": {
+      {
         id: "column-2",
         title: "In Progress",
         todoIds: [],
       },
-      "column-3": {
+      {
         id: "column-3",
         title: "Complete!",
         todoIds: [],
       },
-    },
-    columnOrder: ["column-1", "column-2", "column-3"],
+    ],
     newTodo: "",
   };
 
@@ -53,17 +52,21 @@ class App extends React.Component {
     }
 
     if (destination.droppableId !== source.droppableId) {
-      const startColumn = this.state.columns[source.droppableId];
-      const endColumn = this.state.columns[destination.droppableId];
+      const newColumns = [...this.state.columns];
+      const startColumn = newColumns.find(
+        (column) => column.id === source.droppableId
+      );
+      const endColumn = newColumns.find(
+        (column) => column.id === destination.droppableId
+      );
       const startTodos = [...startColumn.todoIds];
       const endTodos = [...endColumn.todoIds];
-      const newColumns = { ...this.state.columns };
 
       startTodos.splice(source.index, 1);
       endTodos.splice(destination.index, 0, draggableId);
 
-      newColumns[source.droppableId].todoIds = startTodos;
-      newColumns[destination.droppableId].todoIds = endTodos;
+      startColumn.todoIds = startTodos;
+      endColumn.todoIds = endTodos;
 
       this.setState({ columns: newColumns }, () => {
         localStorage.setItem("columns", JSON.stringify(this.state.columns));
@@ -71,14 +74,16 @@ class App extends React.Component {
       return;
     }
 
-    const column = this.state.columns[source.droppableId];
+    const newColumns = [...this.state.columns];
+    const column = newColumns.find(
+      (column) => column.id === source.droppableId
+    );
 
     const newTodos = [...column.todoIds];
-    const newColumns = { ...this.state.columns };
     newTodos.splice(source.index, 1);
     newTodos.splice(destination.index, 0, draggableId);
 
-    newColumns[destination.droppableId].todoIds = newTodos;
+    column.todoIds = newTodos;
 
     this.setState({ columns: newColumns }, () => {
       localStorage.setItem("columns", JSON.stringify(this.state.columns));
@@ -95,10 +100,10 @@ class App extends React.Component {
       return;
     }
     // Copy Todos and Columns
-    const newTodos = { ...this.state.todos };
-    const newColumns = { ...this.state.columns };
+    const newTodos = [...this.state.todos];
+    const newColumns = [...this.state.columns];
     // Find first column
-    const column = this.state.columns["column-1"];
+    const column = newColumns.find((column) => column.id === "column-1");
     // Get ids of first column
     const todoIds = [...column.todoIds];
     // Populate ID for new task
@@ -106,15 +111,34 @@ class App extends React.Component {
     // Push id into column
     todoIds.push(id);
     // Put new task in todos object
-    newTodos[id] = { id: id, task: this.state.newTodo };
+    newTodos.push({ id: id, task: this.state.newTodo });
     // Set todoIds array to column object
-    newColumns["column-1"].todoIds = todoIds;
+    column.todoIds = todoIds;
 
     // Update state
     this.setState({ todos: newTodos, columns: newColumns, newTodo: "" }, () => {
       localStorage.setItem("todos", JSON.stringify(this.state.todos));
       localStorage.setItem("columns", JSON.stringify(this.state.columns));
     });
+  };
+
+  deleteHandler = (id) => {
+    const task = this.state.todos.find((todo) => todo.id === id);
+
+    if (task) {
+      const newColumns = this.state.columns.reduce((prev, cur) => {
+        cur.todoIds = cur.todoIds.filter((todoId) => todoId !== id);
+        prev.push(cur);
+        return prev;
+      }, []);
+
+      const newTodos = this.state.todos.filter((todo) => todo.id !== id);
+
+      this.setState({ todos: newTodos, columns: newColumns }, () => {
+        localStorage.setItem("todos", JSON.stringify(this.state.todos));
+        localStorage.setItem("columns", JSON.stringify(this.state.columns));
+      });
+    }
   };
 
   render() {
@@ -130,6 +154,7 @@ class App extends React.Component {
           change={this.inputChangeHandler}
           submit={this.addFormSubmitHandler}
           click={this.addFormSubmitHandler}
+          onDelete={this.deleteHandler}
         />
       </div>
     );
