@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b048b3ee681c4d35c38c4cd00391ce74",
+    "revision": "bd1fdbb8ee144c69af0b2e21c376380f",
     "url": "/Todo-dnd/index.html"
   },
   {
-    "revision": "b6d102ed6ac3386ad8ed",
+    "revision": "a9ec810e2d7ff63c93ca",
     "url": "/Todo-dnd/static/css/main.f27b75cd.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Todo-dnd/static/js/2.355cf106.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b6d102ed6ac3386ad8ed",
-    "url": "/Todo-dnd/static/js/main.b17d26bc.chunk.js"
+    "revision": "a9ec810e2d7ff63c93ca",
+    "url": "/Todo-dnd/static/js/main.4810bd28.chunk.js"
   },
   {
     "revision": "d5a5837f58ef9680eaf0",
