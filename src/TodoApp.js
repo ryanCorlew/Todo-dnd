@@ -10,9 +10,10 @@ import ListColumns from "./Components/ListColumns";
 const styles = {
   root: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
     width: "100%",
     marginTop: "20px",
+    flexWrap: "wrap",
   },
 };
 

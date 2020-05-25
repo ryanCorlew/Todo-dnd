@@ -7,15 +7,12 @@ import TodoApp from "./TodoApp";
 
 class App extends React.Component {
   state = {
-    todos: {
-      "1": { id: "1", task: "do something" },
-      "2": { id: "2", task: "do something else" },
-    },
+    todos: {},
     columns: {
       "column-1": {
         id: "column-1",
         title: "ToDo",
-        todoIds: ["1", "2"],
+        todoIds: [],
       },
       "column-2": {
         id: "column-2",

@@ -9,7 +9,9 @@ const useStyles = makeStyles({
     padding: "10px",
     border: "solid #00A4FA",
     width: "fit-content",
+    minWidth: "224px",
     height: "fit-content",
+    margin: "10px",
   },
 });
 
