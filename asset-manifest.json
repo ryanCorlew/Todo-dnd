@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Todo-dnd/static/css/main.f27b75cd.chunk.css",
-    "main.js": "/Todo-dnd/static/js/main.6bf82b1e.chunk.js",
-    "main.js.map": "/Todo-dnd/static/js/main.6bf82b1e.chunk.js.map",
+    "main.js": "/Todo-dnd/static/js/main.b17d26bc.chunk.js",
+    "main.js.map": "/Todo-dnd/static/js/main.b17d26bc.chunk.js.map",
     "runtime-main.js": "/Todo-dnd/static/js/runtime-main.15d1b57d.js",
     "runtime-main.js.map": "/Todo-dnd/static/js/runtime-main.15d1b57d.js.map",
     "static/js/2.355cf106.chunk.js": "/Todo-dnd/static/js/2.355cf106.chunk.js",
     "static/js/2.355cf106.chunk.js.map": "/Todo-dnd/static/js/2.355cf106.chunk.js.map",
     "index.html": "/Todo-dnd/index.html",
-    "precache-manifest.78cb29bfc971214abe857a9647e2accf.js": "/Todo-dnd/precache-manifest.78cb29bfc971214abe857a9647e2accf.js",
+    "precache-manifest.f31bce3d6e79cc1c22049f1da582ec13.js": "/Todo-dnd/precache-manifest.f31bce3d6e79cc1c22049f1da582ec13.js",
     "service-worker.js": "/Todo-dnd/service-worker.js",
     "static/css/main.f27b75cd.chunk.css.map": "/Todo-dnd/static/css/main.f27b75cd.chunk.css.map",
     "static/js/2.355cf106.chunk.js.LICENSE.txt": "/Todo-dnd/static/js/2.355cf106.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.15d1b57d.js",
     "static/js/2.355cf106.chunk.js",
     "static/css/main.f27b75cd.chunk.css",
-    "static/js/main.6bf82b1e.chunk.js"
+    "static/js/main.b17d26bc.chunk.js"
   ]
 }
