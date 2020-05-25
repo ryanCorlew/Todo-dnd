@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/Todo-dnd/static/css/main.f27b75cd.chunk.css",
-    "main.js": "/Todo-dnd/static/js/main.4810bd28.chunk.js",
-    "main.js.map": "/Todo-dnd/static/js/main.4810bd28.chunk.js.map",
+    "main.js": "/Todo-dnd/static/js/main.eb5e21df.chunk.js",
+    "main.js.map": "/Todo-dnd/static/js/main.eb5e21df.chunk.js.map",
     "runtime-main.js": "/Todo-dnd/static/js/runtime-main.15d1b57d.js",
     "runtime-main.js.map": "/Todo-dnd/static/js/runtime-main.15d1b57d.js.map",
-    "static/js/2.355cf106.chunk.js": "/Todo-dnd/static/js/2.355cf106.chunk.js",
-    "static/js/2.355cf106.chunk.js.map": "/Todo-dnd/static/js/2.355cf106.chunk.js.map",
+    "static/js/2.9f5579aa.chunk.js": "/Todo-dnd/static/js/2.9f5579aa.chunk.js",
+    "static/js/2.9f5579aa.chunk.js.map": "/Todo-dnd/static/js/2.9f5579aa.chunk.js.map",
     "index.html": "/Todo-dnd/index.html",
-    "precache-manifest.6414a2520f654e7bdeaa66b33299c6af.js": "/Todo-dnd/precache-manifest.6414a2520f654e7bdeaa66b33299c6af.js",
+    "precache-manifest.86aac3c165798e6bf1fe67e860bf1214.js": "/Todo-dnd/precache-manifest.86aac3c165798e6bf1fe67e860bf1214.js",
     "service-worker.js": "/Todo-dnd/service-worker.js",
     "static/css/main.f27b75cd.chunk.css.map": "/Todo-dnd/static/css/main.f27b75cd.chunk.css.map",
-    "static/js/2.355cf106.chunk.js.LICENSE.txt": "/Todo-dnd/static/js/2.355cf106.chunk.js.LICENSE.txt"
+    "static/js/2.9f5579aa.chunk.js.LICENSE.txt": "/Todo-dnd/static/js/2.9f5579aa.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.15d1b57d.js",
-    "static/js/2.355cf106.chunk.js",
+    "static/js/2.9f5579aa.chunk.js",
     "static/css/main.f27b75cd.chunk.css",
-    "static/js/main.4810bd28.chunk.js"
+    "static/js/main.eb5e21df.chunk.js"
   ]
 }
