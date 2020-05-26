@@ -18,3 +18,7 @@
   margin: auto;
   color: white;
 }
+
+.App p {
+  margin-bottom: 10px;
+}

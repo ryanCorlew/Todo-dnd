@@ -14,7 +14,15 @@ const TodoList = styled.div`
   min-height: 25px;
 `;
 
-const Column = ({ todos, column, onDelete }) => {
+const Column = ({
+  todos,
+  column,
+  onDelete,
+  onEdit,
+  isEditing,
+  editChange,
+  editSubmit,
+}) => {
   return (
     <MyCard>
       <Title>{column.title}</Title>
@@ -27,6 +35,10 @@ const Column = ({ todos, column, onDelete }) => {
                 todo={todo}
                 index={index}
                 onDelete={onDelete}
+                onEdit={onEdit}
+                showEditForm={isEditing === todo.id ? true : false}
+                editChange={editChange}
+                editSubmit={editSubmit}
               />
             ))}
             {provided.placeholder}

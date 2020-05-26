@@ -4,26 +4,41 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
-    width: "20rem",
+    width: "fit-content",
   },
   input: {
     color: "white",
   },
 });
 
-const MyTextField = ({ change, value }) => {
+const MyTextField = ({ change, value, isEditing }) => {
   const classes = useStyles();
-  return (
-    <TextField
-      classes={{ root: classes.root }}
-      InputProps={{
-        className: classes.input,
-      }}
-      placeholder="Enter a Todo"
-      onChange={change}
-      value={value}
-    />
-  );
+
+  if (isEditing) {
+    return (
+      <TextField
+        classes={{ root: classes.root }}
+        InputProps={{
+          className: null,
+        }}
+        placeholder=""
+        onChange={change}
+        defaultValue={value}
+      />
+    );
+  } else {
+    return (
+      <TextField
+        classes={{ root: classes.root }}
+        InputProps={{
+          className: classes.input,
+        }}
+        placeholder="Enter a Todo"
+        onChange={change}
+        value={value}
+      />
+    );
+  }
 };
 
 export default MyTextField;

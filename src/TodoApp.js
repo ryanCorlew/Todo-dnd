@@ -19,7 +19,17 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-const TodoApp = ({ onDragEnd, state, change, submit, click, onDelete }) => {
+const TodoApp = ({
+  onDragEnd,
+  state,
+  change,
+  editChange,
+  submit,
+  click,
+  onDelete,
+  onEdit,
+  editSubmit,
+}) => {
   const classes = useStyles();
 
   return (
@@ -36,6 +46,10 @@ const TodoApp = ({ onDragEnd, state, change, submit, click, onDelete }) => {
             todosObj={state.todos}
             columns={state.columns}
             onDelete={onDelete}
+            onEdit={onEdit}
+            isEditing={state.isEditing}
+            editChange={editChange}
+            editSubmit={editSubmit}
           />
         </Container>
       </DragDropContext>

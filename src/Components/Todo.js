@@ -3,17 +3,20 @@ import styled from "styled-components";
 import DragHandle from "@material-ui/icons/DragHandle";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import MyTextField from "../StyledComponents/MyTextField";
+import EditForm from "./EditForm";
 import { Draggable } from "react-beautiful-dnd";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
-    marginLeft: "auto",
+    padding: "2px",
   },
 });
 
 const Task = styled.div`
-  min-height: 2rem;
+  min-height: 3rem;
   width: 12rem;
   margin: 8px;
   padding: 2px 8px 2px 8px;
@@ -32,8 +35,22 @@ const Handle = styled.div`
   margin-right: 2px;
 `;
 
-const Todo = ({ todo, index, onDelete }) => {
+const BtnsContainer = styled.div`
+  display: flex;
+  margin-left: auto;
+`;
+
+const Todo = ({
+  todo,
+  index,
+  onDelete,
+  onEdit,
+  showEditForm,
+  editChange,
+  editSubmit,
+}) => {
   const classes = useStyles();
+
   return (
     <Draggable draggableId={todo.id} index={index}>
       {(provided) => (
@@ -42,17 +59,34 @@ const Todo = ({ todo, index, onDelete }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <Handle>
+          {/* <Handle>
             <DragHandle />
-          </Handle>
-          {todo.task}
-          <IconButton
-            onClick={() => onDelete(todo.id)}
-            className={classes.root}
-            aria-label="delete"
-          >
-            <DeleteIcon />
-          </IconButton>
+          </Handle> */}
+          {showEditForm ? (
+            <EditForm
+              editSubmit={editSubmit}
+              change={editChange}
+              value={todo.task}
+              id={todo.id}
+            />
+          ) : (
+            todo.task
+          )}
+          <BtnsContainer>
+            <IconButton
+              onClick={() => onEdit(todo.id)}
+              className={classes.root}
+            >
+              <EditIcon />
+            </IconButton>
+            <IconButton
+              onClick={() => onDelete(todo.id)}
+              className={classes.root}
+              aria-label="delete"
+            >
+              <DeleteIcon />
+            </IconButton>
+          </BtnsContainer>
         </Task>
       )}
     </Draggable>

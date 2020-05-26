@@ -26,6 +26,8 @@ class App extends React.Component {
       },
     ],
     newTodo: "",
+    editedTodo: "",
+    isEditing: "",
   };
 
   componentDidMount() {
@@ -94,6 +96,11 @@ class App extends React.Component {
     this.setState({ newTodo: e.target.value });
   };
 
+  editChangeHandler = (e) => {
+    // console.log("editing", e.target.value);
+    this.setState({ editedTodo: e.target.value });
+  };
+
   addFormSubmitHandler = (e) => {
     e.preventDefault();
     if (this.state.newTodo === "") {
@@ -122,6 +129,24 @@ class App extends React.Component {
     });
   };
 
+  editFormSubmitHandler = (e, id) => {
+    e.preventDefault();
+    const newTodos = [...this.state.todos];
+
+    newTodos.map((todo) => {
+      if (todo.id === id) {
+        todo.task = this.state.editedTodo;
+        return todo;
+      } else {
+        return todo;
+      }
+    });
+
+    this.setState({ todos: newTodos, isEditing: "" }, () => {
+      localStorage.setItem("todos", JSON.stringify(this.state.todos));
+    });
+  };
+
   deleteHandler = (id) => {
     const task = this.state.todos.find((todo) => todo.id === id);
 
@@ -141,6 +166,10 @@ class App extends React.Component {
     }
   };
 
+  editHandler = (id) => {
+    this.setState({ isEditing: id });
+  };
+
   render() {
     return (
       <div className="App">
@@ -152,9 +181,12 @@ class App extends React.Component {
           state={this.state}
           onDragEnd={this.onDragEnd}
           change={this.inputChangeHandler}
+          editChange={this.editChangeHandler}
           submit={this.addFormSubmitHandler}
           click={this.addFormSubmitHandler}
           onDelete={this.deleteHandler}
+          onEdit={this.editHandler}
+          editSubmit={this.editFormSubmitHandler}
         />
       </div>
     );
