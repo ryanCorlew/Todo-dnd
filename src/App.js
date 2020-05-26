@@ -1,9 +1,30 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 
 import "./App.css";
 
 import TodoApp from "./TodoApp";
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      "PT Sans Narrow",
+      "-apple - system",
+      "BlinkMacSystemFont",
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      "sans - serif",
+    ],
+  },
+});
 
 class App extends React.Component {
   state = {
@@ -181,17 +202,19 @@ class App extends React.Component {
           Todo<span>List</span>
         </h1>
         <p className="SubTitle">With Drag and Drop</p>
-        <TodoApp
-          state={this.state}
-          onDragEnd={this.onDragEnd}
-          change={this.inputChangeHandler}
-          editChange={this.editChangeHandler}
-          submit={this.addFormSubmitHandler}
-          click={this.addFormSubmitHandler}
-          onDelete={this.deleteHandler}
-          onEdit={this.editHandler}
-          editSubmit={this.editFormSubmitHandler}
-        />
+        <ThemeProvider theme={theme}>
+          <TodoApp
+            state={this.state}
+            onDragEnd={this.onDragEnd}
+            change={this.inputChangeHandler}
+            editChange={this.editChangeHandler}
+            submit={this.addFormSubmitHandler}
+            click={this.addFormSubmitHandler}
+            onDelete={this.deleteHandler}
+            onEdit={this.editHandler}
+            editSubmit={this.editFormSubmitHandler}
+          />
+        </ThemeProvider>
       </div>
     );
   }
