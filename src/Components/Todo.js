@@ -4,6 +4,7 @@ import DragHandle from "@material-ui/icons/DragHandle";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import DoneIcon from "@material-ui/icons/Done";
 import MyTextField from "../StyledComponents/MyTextField";
 import EditForm from "./EditForm";
 import { Draggable } from "react-beautiful-dnd";
@@ -51,6 +52,19 @@ const Todo = ({
 }) => {
   const classes = useStyles();
 
+  let editOrDoneBtn = showEditForm ? (
+    <IconButton
+      onClick={(e) => editSubmit(e, todo.id)}
+      className={classes.root}
+    >
+      <DoneIcon />
+    </IconButton>
+  ) : (
+    <IconButton onClick={() => onEdit(todo.id)} className={classes.root}>
+      <EditIcon />
+    </IconButton>
+  );
+
   return (
     <Draggable draggableId={todo.id} index={index}>
       {(provided) => (
@@ -73,12 +87,7 @@ const Todo = ({
             todo.task
           )}
           <BtnsContainer>
-            <IconButton
-              onClick={() => onEdit(todo.id)}
-              className={classes.root}
-            >
-              <EditIcon />
-            </IconButton>
+            {editOrDoneBtn}
             <IconButton
               onClick={() => onDelete(todo.id)}
               className={classes.root}

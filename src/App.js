@@ -131,6 +131,10 @@ class App extends React.Component {
 
   editFormSubmitHandler = (e, id) => {
     e.preventDefault();
+    if (!this.state.editedTodo) {
+      this.setState({ isEditing: "" });
+      return;
+    }
     const newTodos = [...this.state.todos];
 
     newTodos.map((todo) => {
